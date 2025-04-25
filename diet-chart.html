@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personalized Diet Chart</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="section-box">
+        <header>
+            <h1 style="color: #388E3C;">Personalized Diet Chart</h1>
+        </header>
+        <main>
+<p>Welcome to your personalized diet chart! Here you can find a diet plan tailored to your needs. Please fill out the form below:</p>
+<form id="personalized-diet-form">
+    <label for="age">Age:</label>
+    <input type="number" id="age" name="age" required>
+    
+    <label for="gender">Gender:</label>
+    <select id="gender" name="gender" required>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+    </select>
+    
+    <label for="height">Height (cm):</label>
+    <input type="number" id="height" name="height" required>
+    
+    <label for="weight">Weight (kg):</label>
+    <input type="number" id="weight" name="weight" required>
+    
+    <label for="activity-level">Activity Level:</label>
+    <select id="activity-level" name="activity-level" required>
+        <option value="sedentary">Sedentary</option>
+        <option value="light">Lightly active</option>
+        <option value="moderate">Moderately active</option>
+        <option value="active">Active</option>
+    </select>
+    
+    <label for="dietary-restrictions">Dietary Restrictions:</label>
+    <textarea id="dietary-restrictions" name="dietary-restrictions" rows="4" placeholder="Enter any dietary restrictions..."></textarea>
+    
+    <label for="fitness-goals">Fitness Goals:</label>
+    <textarea id="fitness-goals" name="fitness-goals" rows="4" placeholder="Enter your fitness goals..."></textarea>
+    
+    <input type="submit" value="Get Personalized Diet Plan">
+</form>
+
+            <h2>Sample Diet Chart</h2>
+            <table>
+                <tr>
+                    <th>Meal</th>
+                    <th>Food Items</th>
+                </tr>
+                <tr>
+                    <td>Breakfast</td>
+                    <td>Oatmeal, Fruits, Nuts</td>
+                </tr>
+                <tr>
+                    <td>Lunch</td>
+                    <td>Grilled Chicken, Quinoa, Vegetables</td>
+                </tr>
+                <tr>
+                    <td>Dinner</td>
+                    <td>Salmon, Brown Rice, Broccoli</td>
+                </tr>
+            </table>
+            <p>For a more personalized plan, please fill out the form below:</p>
+            <form>
+                <label for="preferences">Your Dietary Preferences:</label>
+                <textarea id="preferences" name="preferences" rows="4" cols="50" placeholder="Enter your dietary preferences..."></textarea>
+                <input type="submit" value="Submit">
+            </form>
+            <h2>Daily Intake Goals</h2>
+            <div id="personalized-outcome" style="display: none;">
+                <h3>Your Personalized Diet Outcome:</h3>
+                <p id="outcome-message"></p>
+            </div>
+
+            <div id="personalized-outcome" style="display: none;">
+                <h3>Your Personalized Diet Outcome:</h3>
+                <p id="outcome-message"></p>
+            </div>
+            <script>
+                document.getElementById('personalized-diet-form').onsubmit = function(event) {
+                    event.preventDefault();
+                    const age = document.getElementById('age').value;
+                    const gender = document.getElementById('gender').value;
+                    const height = document.getElementById('height').value;
+                    const weight = document.getElementById('weight').value;
+                    const activityLevel = document.getElementById('activity-level').value;
+                    const dietaryRestrictions = document.getElementById('dietary-restrictions').value;
+                    const fitnessGoals = document.getElementById('fitness-goals').value;
+
+                    const outcomeMessage = `Based on your inputs: Age: ${age}, Gender: ${gender}, Height: ${height} cm, Weight: ${weight} kg, Activity Level: ${activityLevel}, Dietary Restrictions: "${dietaryRestrictions}", Fitness Goals: "${fitnessGoals}", we recommend a personalized diet plan.`;
+                    document.getElementById('outcome-message').innerText = outcomeMessage;
+                    document.getElementById('personalized-outcome').style.display = 'block';
+                };
+            </script>
+
+        <script>
+            function showOutcome(event) {
+                event.preventDefault();
+                const preferences = document.getElementById('preferences').value;
+                const calories = document.getElementById('calories').value;
+                const protein = document.getElementById('protein').value;
+                const outcomeMessage = `Based on your preferences: "${preferences}", we recommend a diet with ${calories} calories and ${protein}g of protein.`;
+                document.getElementById('outcome-message').innerText = outcomeMessage;
+                document.getElementById('personalized-outcome').style.display = 'block';
+            }
+        </script>
+
+    </div>
+    <footer>
+        <p>&copy; 2023 Nutrition and Fitness. All rights reserved.</p>
+    </footer>
+</body>
+</html>

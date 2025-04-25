@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Your Fitness</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        function calculateBMI() {
+            const name = document.getElementById('name').value;
+            const age = document.getElementById('age').value;
+            const height = document.getElementById('height').value / 100; // Convert cm to m
+            const weight = document.getElementById('weight').value;
+
+            if (height > 0 && weight > 0) {
+                const bmi = (weight / (height * height)).toFixed(2);
+                document.getElementById('result').innerText = `${name}, your BMI is ${bmi}.`;
+                document.getElementById('bmi-table').style.display = 'block'; // Show the BMI table
+            } else {
+                document.getElementById('result').innerText = "Please enter valid height and weight.";
+            }
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Test Your Fitness</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h2>BMI Calculator</h2>
+        <fieldset>
+            <legend>BMI Calculator</legend>
+            <form onsubmit="event.preventDefault(); calculateBMI();">
+
+                <label for="name" aria-label="Name">Name:</label>
+
+            <input type="text" id="name" name="name" required>
+
+                <label for="age" aria-label="Age">Age:</label>
+
+            <input type="number" id="age" name="age" required>
+
+                <label for="height" aria-label="Height in centimeters">Height (cm):</label>
+
+            <input type="number" id="height" name="height" required>
+
+                <label for="weight" aria-label="Weight in kilograms">Weight (kg):</label>
+
+            <input type="number" id="weight" name="weight" required>
+
+            <input type="submit" value="Calculate BMI">
+        </form>
+        <p id="result" aria-live="polite"></p>
+
+        <div id="bmi-table" style="display: none;" aria-hidden="true">
+
+            <h2>Ideal BMI Indexes</h2>
+            <table>
+                <tr>
+                    <th>BMI Category</th>
+                    <th>BMI Range</th>
+                </tr>
+                <tr>
+                    <td>Underweight</td>
+                    <td>BMI < 18.5</td>
+                </tr>
+                <tr>
+                    <td>Normal weight</td>
+                    <td>BMI 18.5 - 24.9</td>
+                </tr>
+                <tr>
+                    <td>Overweight</td>
+                    <td>BMI 25 - 29.9</td>
+                </tr>
+                <tr>
+                    <td>Obesity</td>
+                    <td>BMI ≥ 30</td>
+                </tr>
+            </table>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Nutrition and Fitness. All rights reserved.</p>
+    </footer>
+</body>
+</html>
